@@ -1,7 +1,13 @@
 A (simple) Tool for Creating Better Synthetic Images for ML Training
 ====================================================================
 
-This is the code to support the Medium article of the same title.
+This is the code to support the Medium article of the same title.   https://medium.com/@peter.gaston/a-simple-tool-for-creating-better-synthetic-images-for-ml-training-b1642b4e921b
+
+Background, in short...
+-----------------------
+
+Getting real data to train your vision model is hard.   Getting synthetic data is fairly easy.    
+Adding real world 'noise' into your objects can greatly help the robustness of training from synthetic data.    That's this tool.
 
 Try it out
 ----------
