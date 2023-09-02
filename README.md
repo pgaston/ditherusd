@@ -81,11 +81,14 @@ object_pallet_0001:
 # rest - lighting, camera, output desired
 ```
 
-
-# Good luck!
+Hints:
+- The NVidia discussion forums can be helpful
+- Currently (summer '23) the composer tool does not output camera parameters.    My work-around was to always have the camera in a known position, i.e., to not move the camera.
 
 
 Feedback/Contributing
 ---------------------
 
 Feedback and Contributions are encouraged!
+
+# Good luck!
