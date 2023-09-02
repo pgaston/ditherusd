@@ -1,5 +1,5 @@
 
-baseUSDFile:  /home/pg/Documents/synthUSD/built/GMApallet.usda
+baseUSDFile:  built/GMApallet.usda
 outPrefix:  xtest
 
 Operations:

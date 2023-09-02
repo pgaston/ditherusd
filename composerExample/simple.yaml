@@ -1,0 +1,97 @@
+# To run - on my machine:
+# ./python.sh tools/composer/src/main.py --input */parameters/take7/simple.yaml --output */dataset/take7-simple1 --mount ~/composer-workspace --headless --num-scenes 10
+#
+# Sometimes Isaac Sim gets confused - try this as a launch parameter
+# --reset-data
+# 
+# This is a simple example of a yaml file that can be used to generate a dataset
+
+# 'room' scenario - just a floor and a wall
+scenario_room_enabled: True
+floor: True
+wall: True
+ceiling: False
+
+# wall_height: 1000
+floor_size: 20
+# wall_color: (0,0,255)
+wall_material: Choice(["*/assets/materials/wall_materials.txt"])
+floor_material: Choice(["*/assets/materials/wall_materials.txt"])
+
+
+# warehouse objects
+## Pallets - one in middle-ish, one left-ish, one on right-ish
+object_pallet_0001:
+  # obj_model: /Library/DRPallets/Plt-B0-W0.usd
+  obj_model: Choice(["built/GMApallet.usda", "built/xtest_1.usda", "built/xtest_2.usda", "built/xtest_3.usda" ])
+  obj_count: 1
+  obj_physics: False
+  obj_coord_camera_relative: False    # Use exact coordinates
+  obj_coord: (Uniform(2.5, 4.0), Uniform(-0.02,0.02), 0)
+  obj_rot: (0, 0, Uniform(88, 92))  # usd pallet, w/o payload
+  obj_texture: Choice(["*/assets/materials/pallet_textures.txt"])
+  obj_texture_scale: (Uniform(0.1, 10.0), Uniform(0.1,10.0))
+  obj_class_id: 91
+
+object_pallet_0002:
+  obj_model: Choice(["built/GMApallet.usda", "built/xtest_1.usda", "built/xtest_2.usda", "built/xtest_3.usda" ])
+  obj_count: 1
+  obj_physics: False
+  obj_coord_camera_relative: False    # Use exact coordinates
+  obj_coord: (Uniform(1.5, 2.5), Uniform(-1.64,-0.8), 0)
+  obj_rot: (0, 0, Uniform(80, 100))  # usd pallet, w/o payload
+  obj_texture: Choice(["*/assets/materials/pallet_textures.txt"])
+  obj_texture_scale: (Uniform(0.1, 10.0), Uniform(0.1,10.0))
+  obj_class_id: 92
+
+object_pallet_0003:
+  obj_model: Choice(["built/GMApallet.usda", "built/xtest_1.usda", "built/xtest_2.usda", "built/xtest_3.usda" ])
+  obj_count: 1
+  obj_physics: False
+  obj_coord_camera_relative: False    # Use exact coordinates
+  obj_coord: (Uniform(1.5,2.5), Uniform(0.8,1.64), 0)
+  obj_rot: (0, 0, Uniform(80, 100))  # usd pallet, w/o payload
+  obj_texture: Choice(["*/assets/materials/pallet_textures.txt"])
+  obj_texture_scale: (Uniform(0.1, 10.0), Uniform(0.1,10.0))
+  obj_class_id: 93
+
+## Distractors
+distractors:
+  obj_model: Choice(["*/assets/models/warehouse_distractors.txt"])
+  obj_count: Range(8,25)
+  obj_coord_camera_relative: False    # Use exact coordinates
+  obj_coord: (Uniform(5.0, 10.0), Uniform(-5,5), 0)
+  obj_rot: (0, 0, Uniform(0, 360)) 
+  obj_class_id: 98
+
+# colorful ceiling lights
+lights:
+  light_count: Range(1, 5)
+  light_coord_camera_relative: False
+  light_coord: (Uniform(-200, 200), Uniform(-200, 200), 500)
+  light_color: (255, 255, 255)
+  light_intensity: Uniform(200000, 300000)
+  light_radius: 100
+
+# camera
+focal_length: 24.0   # 5.4 is approx. 128 degree FOV
+# clipping_range=(0.1, 1000000.0))   # see line 363 of composer.py
+camera_coord: (0, 0, 0.45)
+camera_rot: (0, 0, 180)
+
+img_width: 1280
+img_height: 720
+
+# outputs
+rgb: True
+semantic_seg: True
+instance_seg: True
+bbox_2d_tight: True
+bbox_2d_loose: True
+bbox_3d: True
+occlusion: True
+# camera_params: True   # doesn't exist, but should...
+groundtruth_visuals: True   # False means npy array
+
+# model store
+nucleus_server: localhost
