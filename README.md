@@ -43,6 +43,16 @@ There are also three functions (currently) you can use within your arguments for
 - Normal - provides a normal distribution, arguments (low, high)
 - Choice - returns one out of a list of options, arguments a list of options
 
+Example (from test.yaml)
+```
+  front-top:
+    path: /Root/GMA_Pallet/part2
+    translate: (0,Uniform(-0.2,0.2),Uniform(-0.2,0.2))
+    rotate: Choice([(0,0,0), (0,0,Uniform(-5,5))])
+    scale: (1,Uniform(0.95,1.05),Uniform(0.95,1.05))
+    color: (0.85, 0.35, 0.35)
+```
+
 Hints:
 - You'll probably need to experiment to get the effects you desire.
 - Setting the color to be obvious, can help in this.    This is what is done in the test.yaml example.
@@ -55,7 +65,7 @@ The dithered files you create can be directly used from NVidia composer.   The u
 
 See the full example in composerExample/simple.yaml
 
-'''
+```
 # header - set the basics, e.g., wall, floor
 
 object_pallet_0001:
@@ -69,7 +79,7 @@ object_pallet_0001:
   obj_class_id: 91
 
 # rest - lighting, camera, output desired
-'''
+```
 
 #Good luck!
 
