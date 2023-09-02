@@ -1,5 +1,5 @@
-Creating Better Synthetic Images for ML Training
-================================================
+A (simple) Tool for Creating Better Synthetic Images for ML Training
+====================================================================
 
 This is the code to support the Medium article of the same title.
 
